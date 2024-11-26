@@ -144,7 +144,7 @@ const App = () => {
 
   const startTask2 = () => {
     reset();
-    setInputText('jqmes bond');
+    setInputText('JQMES BOND');
   }
   
   return (

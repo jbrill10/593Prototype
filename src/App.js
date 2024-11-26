@@ -150,7 +150,7 @@ const App = () => {
         onOKPress={handleOKPress}
         handleGesture={handleGesture}
       />
-      <img src={gestures} height="1000" width="1000" style={{'border':0}}/>
+      <img src={gestures} height="264" width="920" style={{'border':0}}/>
       {/* <Trackpad handleGesture={handleGesture}/> */}
     </div>
   );

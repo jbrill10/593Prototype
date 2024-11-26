@@ -33,48 +33,52 @@ const App = () => {
     }
     if (direction === 'left' && selectedCol > 0) setSelectedCol(selectedCol - 1);
     if (direction === 'right' && selectedCol < keyboardLayout[selectedRow].length - 1) setSelectedCol(selectedCol + 1);
-
-    setButtonClickCount(buttonClickCount + 1);
+    console.log("BUTTON CLICK DIRECTION: ", buttonClickCount);
+    setButtonClickCount((prevClicks) => prevClicks + 1);
   };
 
   const handleOKPress = () => {
     const key = keyboardLayout[selectedRow][selectedCol];
     if (key === 'Delete') {
       setInputText(inputText.slice(0, -1));
+      setButtonClickCount((prevClicks) => prevClicks + 1);
     } else if (key === 'Space') {
-      console.log("SPACE");
-      console.log("|", inputText, "|");
       setInputText(inputText + ' ');
-    } else if (key == 'Submit') {
-      console.log("SUBMIT");
+      setButtonClickCount((prevClicks) => prevClicks + 1);
+    } else if (key === 'Submit') {
+      setButtonClickCount((prevClicks) => prevClicks + 1);
       handleSubmit();
     } else {
       setInputText(inputText + key);
+      setButtonClickCount((prevClicks) => prevClicks + 1);
     }
-    setButtonClickCount(buttonClickCount + 1); 
   };
 
   const handleGesture = (gesture) => {
-    setGestureCount(gestureCount + 1);
-    switch (gesture) {
-      case 'swipe-left':
-        swipeLeft();
-        break;
-      case 'swipe-right':
-        swipeRight();
-        break;
-      case 'swipe-up':
-        swipeUp();
-        break;
-      case 'swipe-down':
-        swipeDown();
-        break;
-      case 'click':
-        swipeClick();
-        break;
-      case 'double-click':
-        swipeDoubleClick();
-        break;
+    if (gesture) {
+      setGestureCount((prevCount) => prevCount + 1);
+      console.log("GESTURE: ", gesture, " COUNT: ", gestureCount);
+      
+      switch (gesture) {
+        case 'swipe-left':
+          swipeLeft();
+          break;
+        case 'swipe-right':
+          swipeRight();
+          break;
+        case 'swipe-up':
+          swipeUp();
+          break;
+        case 'swipe-down':
+          swipeDown();
+          break;
+        case 'click':
+          swipeClick();
+          break;
+        case 'double-click':
+          swipeDoubleClick();
+          break;
+      }
     }
   };
 
@@ -124,11 +128,7 @@ const App = () => {
   };
 
   const handleSubmit = () => {
-    console.log(inputText);
-    // We use gestureCount - 1 because double click counts an extra gesture. On fresh start this isn't an issue for some reason, so we also account for gestureCount === 0
-    // It's a hacky fix but it works
-    const realGestureCount = gestureCount === 1 ? 1 : gestureCount - 1;
-    alert(`Search Query Submitted: ${inputText} \nTotal buttons pressed: ${buttonClickCount} \nTotal gestures: ${realGestureCount} \nTotal actions: ${buttonClickCount + realGestureCount}`);
+    alert(`Search Query Submitted: ${inputText} \nTotal buttons pressed: ${buttonClickCount} \nTotal gestures: ${gestureCount} \nTotal actions: ${buttonClickCount + gestureCount}`);
     reset();
   }
 
@@ -137,9 +137,10 @@ const App = () => {
   };
 
   const reset = () => {
-    setButtonClickCount(0);
-    setGestureCount(0);
-    setInputText('');
+    setButtonClickCount(() => 0);
+    setGestureCount(() => 0);
+    setInputText(() => '');
+    setPrevGesture(() => [null, null, null]);
   }
 
   const startTask2 = () => {

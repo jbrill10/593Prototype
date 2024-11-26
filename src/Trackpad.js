@@ -42,33 +42,27 @@ const Trackpad = ({ handleGesture }) => {
 
         // handle single click
         if (Math.abs(xDifference) + Math.abs(yDifference) < 1) {
-            console.log("CLICK");
+            console.log("CLICK GESTURE");
             handleGesture('click');
             return;
         }
 
         if (Math.abs(xDifference) > Math.abs(yDifference)) {
-            console.log("HORIZONTASL");
             // more horizontal movement so this is a left-right swipe
             if (xDifference > 0) {
                 //right swipe
-                console.log("RIGHT");
                 handleGesture('swipe-right')
             } else {
                 //left swipe
-                console.log("LEFT");
                 handleGesture('swipe-left')
             }
             // handleGesture('')
         } else {
-            console.log("NIOT HORIZNOATION");
             // up-down swipe
             if (yDifference > 0) {
                 // down swipe
-                console.log("DOWN");
                 handleGesture('swipe-down');
             } else {
-                console.log("UP");
                 // up swipe
                 handleGesture('swipe-up');
             }

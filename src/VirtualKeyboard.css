@@ -2,13 +2,19 @@
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    margin-left: 20rem;
-  }
+    margin-left: auto;
+    margin-right: auto;
+}
+  
   
   .keyboard-row {
     display: flex;
-    /* justify-content: center; */
+    justify-content: center;
     margin: 5px 0;
+  }
+
+  .keyboard-key.keyboard-space {
+    width: 480px;
   }
   
   .keyboard-key {
@@ -28,8 +34,10 @@
   }
   
   .text-display {
-    margin: 1rem;
-    margin-left: 20rem;
+    margin-right: auto;
+    margin-left: auto;
     width: 40%;
+    white-space: pre;
+    height: 1.2rem;
     border: 2px solid blue;
   }

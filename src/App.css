@@ -17,3 +17,21 @@
   font-weight: bold;
   margin: 0;
 }
+
+.trackpad {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ccc;
+  position: relative;
+  user-select: none;
+}
+
+.cursor {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}

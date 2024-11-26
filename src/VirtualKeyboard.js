@@ -9,9 +9,13 @@ const VirtualKeyboard = ({ text, selectedRow, selectedCol, layout }) => {
         {layout.map((row, rowIndex) => (
           <div key={rowIndex} className="keyboard-row">
             {row.map((key, colIndex) => (
+              
               <span 
                 key={colIndex} 
-                className={`keyboard-key ${rowIndex === selectedRow && colIndex === selectedCol ? 'selected' : ''}`}
+                className={key !== 'Space' ? 
+                `keyboard-key ${rowIndex === selectedRow && colIndex === selectedCol ? 'selected' : ''}` : 
+                `keyboard-key keyboard-space ${rowIndex === selectedRow && colIndex === selectedCol ? 'selected' : ''}`
+              }
               >
                 {key}
               </span>

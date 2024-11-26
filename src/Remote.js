@@ -1,16 +1,18 @@
 import React from 'react';
 import './Remote.css';
+import Trackpad from './Trackpad';
 
-const Remote = ({ onDirectionPress, onOKPress }) => {
+const Remote = ({ onDirectionPress, onOKPress, handleGesture }) => {
   return (
     <div className="remote">
-      <button onClick={() => onDirectionPress('up')}>▲</button>
+      <button className="dpad" onClick={() => onDirectionPress('up')}>▲</button>
       <div className="direction-row">
-        <button onClick={() => onDirectionPress('left')}>◀</button>
-        <button onClick={onOKPress}>OK</button>
-        <button onClick={() => onDirectionPress('right')}>▶</button>
+        <button className="dpad" onClick={() => onDirectionPress('left')}>◀</button>
+        <button className="dpad" onClick={onOKPress}>OK</button>
+        <button className="dpad" onClick={() => onDirectionPress('right')}>▶</button>
       </div>
-      <button onClick={() => onDirectionPress('down')}>▼</button>
+      <button className="dpad" onClick={() => onDirectionPress('down')}>▼</button>
+      <Trackpad className="trackpad" handleGesture={handleGesture}/>
     </div>
   );
 };

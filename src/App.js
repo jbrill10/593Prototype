@@ -129,15 +129,23 @@ const App = () => {
     // It's a hacky fix but it works
     const realGestureCount = gestureCount === 1 ? 1 : gestureCount - 1;
     alert(`Search Query Submitted: ${inputText} \nTotal buttons pressed: ${buttonClickCount} \nTotal gestures: ${realGestureCount} \nTotal actions: ${buttonClickCount + realGestureCount}`);
-    setButtonClickCount(0);
-    setGestureCount(0);
-    console.log("RESETTING GESTURE COUNT");
-    setInputText('');
+    reset();
   }
 
   const swipeDoubleClick = () => {
     handleSubmit();
   };
+
+  const reset = () => {
+    setButtonClickCount(0);
+    setGestureCount(0);
+    setInputText('');
+  }
+
+  const startTask2 = () => {
+    reset();
+    setInputText('jqmes bond');
+  }
   
   return (
     <div className="app">
@@ -154,7 +162,10 @@ const App = () => {
         onOKPress={handleOKPress}
         handleGesture={handleGesture}
       />
-      <img src={gestures} height="264" width="0" style={{'border':0}}/>
+      <img src={gestures} height="264" width="920"/>
+      <div style={{textAlign:'center'}}>
+        <button onClick={startTask2} style={{width:200, height:100}}>Start Task 2</button>
+      </div>
       {/* <Trackpad handleGesture={handleGesture}/> */}
     </div>
   );

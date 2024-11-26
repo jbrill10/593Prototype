@@ -22,8 +22,11 @@ const Trackpad = ({ handleGesture }) => {
         }
     };
 
-    const handleMouseUp = () => {
+    const handleMouseUp = (event) => {
         if (!isDragging) {
+            return;
+        }
+        if (event.detail === 2){
             return;
         }
         setIsDragging(false);

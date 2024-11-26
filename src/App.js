@@ -75,7 +75,7 @@ const App = () => {
         swipeDoubleClick();
         break;
     }
-    setGestureCount(buttonClickCount + 1);
+    setGestureCount(gestureCount + 1);
   };
 
   const swipeLeft = () => {
